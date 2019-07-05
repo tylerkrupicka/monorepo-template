@@ -1,0 +1,17 @@
+{
+  "name": "@{{kebab}}/babel-preset",
+  "description": "Automatically load the css for the @{{kebab}} design system.",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "{{repoUrl}}",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "!*.test.*",
+    "!__snapshots__",
+    "!__tests__"
+  ],
+  "dependencies": {
+    "@design-systems/babel-plugin-include-styles": "{{cliVersion}}"
+  }
+}
