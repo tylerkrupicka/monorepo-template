@@ -5,6 +5,11 @@
     "baseUrl": ".",
     "paths": {
       "@{{kebab}}/*": ["components/*/src", "packages/*/src"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin"
+      }
+    ]
   }
 }

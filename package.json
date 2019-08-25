@@ -8,7 +8,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "create": "ds create component",
+    "create": "ds create component --template styled-components",
     "create:package": "ds create package",
     "clean": "ds clean",
     "dev": "ds dev",
@@ -36,7 +36,8 @@
     "lerna": "3.15.0",
     "lint-staged": "^9.0.0",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "typescript-styled-plugin": "0.14.0"
   },
   "prettier": {
     "singleQuote": true
