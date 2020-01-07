@@ -8,8 +8,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "create": "ds create component",
-    "create:package": "ds create package",
+    "create": "ds create component --template js",
+    "create:package": "ds create package --template js",
     "clean": "ds clean",
     "dev": "ds dev",
     "start": "lerna run start --parallel",
