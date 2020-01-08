@@ -24,7 +24,6 @@ out/
 bundle-master
 bundle-pr
 diff.html
-.intuitgithookrc
 roleFile
 core.*
 .env
