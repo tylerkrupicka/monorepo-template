@@ -53,8 +53,6 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commit-msg",
-      "post-checkout": "post-checkout",
       "pre-commit": "lint-staged"
     }
   }
