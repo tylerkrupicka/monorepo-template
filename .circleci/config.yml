@@ -57,7 +57,7 @@ jobs:
           paths:
             - .
 
-  Documentation:
+  documentation:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -118,18 +118,6 @@ jobs:
       - run:
           name: Release
           command: yarn release
-
-  deploy_prod:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/design-system
-      - run:
-          name: Install now
-          command: sudo npm i -g now
-      - run:
-          name: Deploy Website
-          command: now -t $NOW_TOKEN --prod --force
 
 workflows:
   version: 2
