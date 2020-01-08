@@ -4,7 +4,7 @@
     // Monorepo support
     "baseUrl": ".",
     "paths": {
-      "@{{kebab}}/*": ["components/*/src", "packages/*/src"]
+      "@{{kebab}}/*": ["packages/*/src"]
     }
   }
 }
