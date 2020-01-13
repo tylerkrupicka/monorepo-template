@@ -2,7 +2,25 @@
   <h1>{{kebab}}</h1>
 </div>
 
-> A monorepo built for {{kebab}}.
+> A design system for {{kebab}} UI components, built on [@design-systems/cli](https://github.com/intuit/design-systems-cli).
+
+## 👍 Philosophy
+
+This is a design system intended for UI components currently being built or tested in {{kebab}}.
+
+Included with this repo:
+
+- Scaffolding for shared components and packages.
+- Automatic CI/CD pipeline on circleCI.
+  - PR canary builds to NPM (using auto).
+  - Canary builds of Storybook (guides included in docs).
+  - Accessibility audits.
+  - Bundle size monitoring.
+- An instance of the Storybook documentation site with custom plugins.
+- Theme support.
+- Advanced development using Typescript.
+
+Components in this repository will ideally not clone functionality from other design systems, unless necessary for a time-boxed experiment.
 
 ## 🚀 Usage
 
