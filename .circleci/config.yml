@@ -68,10 +68,12 @@ jobs:
       - run:
           name: Build Playroom
           command: yarn build:playroom
-      - persist_to_workspace:
-          root: .
-          paths:
-            - ./out
+      - store_artifacts:
+          path: ./out
+          destination: documentation
+      - run:
+          name: Post Link to storybook + playroom
+          command: node ./.circleci/post-build-url.js
 
   pr-check:
     <<: *defaults
@@ -100,6 +102,16 @@ jobs:
           name: Lint
           command: yarn lint
 
+  release:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/design-system
+      - run: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+      - run:
+          name: Release
+          command: yarn release
+
   size:
     <<: *defaults
     steps:
@@ -109,15 +121,23 @@ jobs:
           name: Check component bundle sizes
           command: SIZE_TABLE=`yarn --silent size --ci` && npx auto comment --message "$SIZE_TABLE" --context bundle
 
-  release:
+  a11y:
     <<: *defaults
     steps:
       - attach_workspace:
           at: ~/design-system
-      - run: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
       - run:
-          name: Release
-          command: yarn auto shipit
+          name: Check component accessibility
+          command: node ./.circleci/proof-a11y.js
+
+  integration:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/design-system
+      - run:
+          name: Run integrations tests
+          command: node ./.circleci/proof.js
 
 workflows:
   version: 2
@@ -129,16 +149,33 @@ workflows:
           requires:
             - install
 
-      - documentation:
+      - pr-check:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore:
+                - master
+
+      - unit-tests:
           requires:
             - build
 
-      - pr-check:
+      - lint:
+          requires:
+            - build
+
+      - documentation:
+          requires:
+            - unit-tests
+            - lint
+
+      - release:
           requires:
             - documentation
           filters:
             branches:
-              ignore:
+              only:
                 - master
 
       - size:
@@ -149,19 +186,18 @@ workflows:
               ignore:
                 - master
 
-      - unit-tests:
+      - a11y:
           requires:
             - documentation
-
-      - lint:
-          requires:
-            - documentation
-
-      - release:
-          requires:
-            - unit-tests
-            - lint
           filters:
             branches:
-              only:
+              ignore:
+                - master
+
+      - integration:
+          requires:
+            - documentation
+          filters:
+            branches:
+              ignore:
                 - master
