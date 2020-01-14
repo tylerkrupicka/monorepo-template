@@ -6,6 +6,9 @@
   "contributors": [
     "{{authorName}} {{authorEmail}}"
   ],
+  "resolutions": {
+    "postcss-markdown": "https://github.com/gucong3000/postcss-markdown"
+  },
   "license": "MIT",
   "scripts": {
     "create": "ds create component --template js",
