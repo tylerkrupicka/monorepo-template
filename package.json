@@ -23,12 +23,12 @@
     "packages/*"
   ],
   "devDependencies": {
-    "auto": "7.4.4",
+    "auto": "9.0.2",
     "@design-systems/cli": "{{cliVersion}}",
-    "husky": "2.7.0",
-    "prettier": "1.18.2",
-    "lerna": "3.15.0",
-    "lint-staged": "^9.0.0"
+    "husky": "3.1.0",
+    "prettier": "1.19.1",
+    "lerna": "3.20.2",
+    "lint-staged": "9.5.0"
   },
   "prettier": {
     "singleQuote": true
@@ -40,7 +40,7 @@
     ]
   },
   "jest-junit": {
-    "output": "./coverage/target/surefire-reports/junit.xml"
+    "outputDirectory": "./coverage/target/surefire-reports"
   },
   "husky": {
     "hooks": {
