@@ -3,5 +3,17 @@
   "build": {
     "cssImport": true,
     "cssMain": "main"
+  },
+  "create": {
+    "component": {
+      "templates": [
+        {
+          "name": "ts",
+          "url": "https://github.com/tylerkrupicka/component-template",
+          "description": "tylerkrupicka component template",
+          "sha": "62ae7046c21e1a579189f72a2e21b61a2bc27314"
+        }
+      ]
+    }
   }
 }
