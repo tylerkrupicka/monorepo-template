@@ -37,37 +37,67 @@ yarn add @{{kebab}}/card
 Then to use the component in your code just import it!
 
 ```js
-import Card from '@{{kebab}}/card';
+import Card from "@{{kebab}}/card";
 ```
 
 ### :nail_care: CSS
 
-To use the components you have to import the `css` files along with the components.
+Our components automatically import CSS files, which should work by default with most UI build tools. The CSS includes any themes we have set up in the project.
+If your project only ever needs a single theme,
+you can set up your build step to remove unused themes. This can help shave off ~20% of the CSS in the project by removing unneeded theme variables.
 
-```js
-import Card from '@{{kebab}}/card';
-import '@{{kebab}}/card/dist/main.css';
-```
-
-Or you can use our babel preset to do this automatically for you.
-
-First install the preset
+1. Install the plugin
 
 ```sh
-npm i --save-dev @{{kebab}}/babel-preset
+npm i --save-dev @design-systems/babel-plugin-replace-styles
 # or
-yarn add -D @{{kebab}}/babel-preset
+yarn add -D @design-systems/babel-plugin-replace-styles
 ```
 
-In your babel config add the following preset:
+2. Rename your `.babelrc` to `babel.config.json`. This is [required](https://babeljs.io/docs/en/configuration#babelconfigjs) so Babel will process library files.
+
+3. In your babel config add the following plugin. You can change the `use` parameter to any of the available themes.
 
 ```json
 {
-  "presets": ["@{{kebab}}/babel-preset"]
+  "plugins": [
+    [
+      "@design-systems/babel-plugin-replace-styles",
+      {
+        "scope": "{{kebab}}",
+        "use": "some-theme",
+        "replace": "main"
+      }
+    ]
+  ]
 }
 ```
 
-Now whenever you import one of the `@{{kebab}}` components, `babel` will automatically include the correct CSS file!
+4. Make sure your Webpack config runs babel on `@{{kebab}}` packages.
+
+```js
+module: {
+  rules: [
+    {
+      include: [
+        path.join(__dirname, 'node_modules/@{{kebab}}/'),
+        path.join(__dirname, 'src'),
+      ],
+      test: /\.(js|jsx|mjs|tsx|ts)$/,
+      loader: 'babel-loader',
+    },
+  ],
+}
+```
+
+#### Manual Imports
+
+If you want to manually import CSS for some reason, it should be possible using the following syntax.
+
+```js
+import { Card } from "@{{kebab}}/card";
+import "@{{kebab}}/card/dist/main.css";
+```
 
 ## 🤝 Contributing
 

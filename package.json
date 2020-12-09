@@ -6,9 +6,6 @@
   "contributors": [
     "{{authorName}} {{authorEmail}}"
   ],
-  "resolutions": {
-    "postcss-markdown": "https://github.com/gucong3000/postcss-markdown"
-  },
   "license": "MIT",
   "scripts": {
     "create": "ds create component",
@@ -17,41 +14,73 @@
     "dev": "ds dev",
     "start": "lerna run start --parallel",
     "storybook": "ds storybook start",
-    "playroom": "ds playroom start",
     "lint": "ds lint",
     "test": "ds test",
     "build": "lerna run build --stream",
     "build:storybook": "ds storybook build",
-    "build:playroom": "ds playroom build",
     "size": "ds size"
   },
   "workspaces": [
     "components/*",
     "packages/*"
   ],
-  "devDependencies": {
-    "auto": "9.0.2",
-    "@design-systems/cli": "{{cliVersion}}",
-    "@testing-library/react": "9.4.0",
-    "@types/react-dom": "16.9.4",
-    "husky": "3.1.0",
-    "prettier": "1.19.1",
-    "lerna": "3.20.2",
-    "lint-staged": "9.5.0",
+  "resolutions": {
+    "@types/react": "16.9.53",
+    "@types/react-dom": "16.9.8",
     "react": "16.9.0",
-    "react-dom": "16.9.0"
+    "react-dom": "16.9.0",
+    "html-webpack-plugin": "4.5.0"
+  },
+  "devDependencies": {
+    "@auto-it/all-contributors": "9.53.1",
+    "@auto-it/first-time-contributor": "9.53.1",
+    "@auto-it/jira": "9.53.1",
+    "@auto-it/slack": "9.53.1",
+    "@design-systems/cli": "{{cliVersion}}",
+    "@doc-blocks/gallery": "0.8.2",
+    "@doc-blocks/shield-row": "0.8.2",
+    "@doc-blocks/version": "0.8.2",
+    "@storybook/addon-docs": "^6.1.10",
+    "@storybook/addon-knobs": "^6.1.10",
+    "@storybook/addon-links": "^6.1.10",
+    "@storybook/components": "^6.1.10",
+    "@storybook/react": "^6.1.10",
+    "@testing-library/react": "11.0.4",
+    "@types/react-color": "3.0.1",
+    "@types/webdriverio": "4.13.3",
+    "@types/webpack-env": "1.14.1",
+    "all-contributors-cli": "6.13.0",
+    "auto": "9.53.1",
+    "auto-plugin-ds-size-changelog": "0.0.2",
+    "babel-loader": "8.1.0",
+    "eslint-import-resolver-lerna": "1.1.0",
+    "html-webpack-insert-text-plugin": "1.0.3",
+    "husky": "3.1.0",
+    "lerna": "3.22.1",
+    "lint-staged": "9.5.0",
+    "postcss-calc": "7.0.1",
+    "postcss-cli": "6.1.3",
+    "postcss-mixins": "6.2.3",
+    "postcss-simple-vars": "5.0.2",
+    "postcss-themed": "2.2.0",
+    "prettier": "2.1.2",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "react-test-renderer": "16.13.1",
+    "typescript": "4.0.3",
+    "webpack-dev-server": "3.11.0"
+  },
+  "peerDependencies": {
+    "@storybook/react": "^6.1.10"
   },
   "prettier": {
-    "singleQuote": true
+    "singleQuote": false
   },
   "lint-staged": {
     "*.{js,json,css,md,ts,tsx,jsx}": [
       "prettier --write",
       "git add"
     ]
-  },
-  "jest-junit": {
-    "outputDirectory": "./coverage/target/surefire-reports"
   },
   "husky": {
     "hooks": {

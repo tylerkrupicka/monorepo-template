@@ -1,0 +1,31 @@
+{
+  "name": "@{{kebab}}/docs",
+  "version": "0.0.0",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist",
+  "repository": "{{repoUrl}}",
+  "author": "{{authorName}} {{authorEmail}}",
+  "contributors": [
+    "{{authorName}} {{authorEmail}}"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "clean": "ds clean",
+    "build": "ds build",
+    "start": "ds build --watch",
+    "test": "ds test",
+    "lint": "ds lint",
+    "size": "ds size"
+  },
+  "files": [
+    "dist",
+    "src",
+    "!*.test.*",
+    "!__snapshots__",
+    "!__tests__"
+  ],
+  "dependencies": {
+    "@babel/runtime": "~7.11.2"
+  }
+}
